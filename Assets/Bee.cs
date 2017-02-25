@@ -51,10 +51,10 @@ class WanderState : State
 
 class GoToResource: State
 {
-    public Resource flower;
+    public Polen flower;
     public GoToResource(GameObject flower)
     {
-        this.flower = flower.GetComponent<Resource>();
+        this.flower = flower.GetComponent<Polen>();
     }
     public override void Enter()
     {
@@ -85,8 +85,8 @@ class GoToResource: State
 
 class ConsumeResource:State
 {
-    Resource flower;
-    public ConsumeResource(Resource flower)
+    Polen flower;
+    public ConsumeResource(Polen flower)
     {
         this.flower = flower;
     }
@@ -105,13 +105,13 @@ class ConsumeResource:State
             bee.ChangeState(new ReturnToHive());
             return;
         }
-        if (flower.value <= 0)
+        if (flower.polen <= 0)
         {
             GameObject.Destroy(flower.gameObject);
             bee.ChangeState(new ReturnToHive());
             return;
         }
-        flower.value -= Time.deltaTime;
+        flower.polen -= Time.deltaTime;
         bee.polen += Time.deltaTime;
 
     }
@@ -138,9 +138,6 @@ class ReturnToHive : State
     }
 }
 
-
-
-
 public class Bee : MonoBehaviour {
     public Vector3 force;
     public Vector3 acceleration;
@@ -153,8 +150,7 @@ public class Bee : MonoBehaviour {
     public Vector3 arriveTarget;
     public float slowingDistance = 20;
 
-    public float energy = 20.0f;
-
+    
     public float polen = 0;
 
     State state;
