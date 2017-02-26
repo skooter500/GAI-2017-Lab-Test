@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Polen : MonoBehaviour {
+public class Flower : MonoBehaviour {
     public float polen = 0;
 	// Use this for initialization
 	void Start () {
         polen = Random.Range(1, 5);
-	}
+        transform.localScale = new Vector3(1, 0, 1);
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -15,7 +15,7 @@ class WanderState : State
 {
     public override void Enter()
     {
-        ResourceSpawner flowers = GameObject.FindObjectOfType<ResourceSpawner>();
+        FlowerSpawner flowers = GameObject.FindObjectOfType<FlowerSpawner>();
         
         bee.arriveEnabled = true;
         bee.arriveTarget = new Vector3(
@@ -51,10 +51,10 @@ class WanderState : State
 
 class GoToResource: State
 {
-    public Polen flower;
+    public Flower flower;
     public GoToResource(GameObject flower)
     {
-        this.flower = flower.GetComponent<Polen>();
+        this.flower = flower.GetComponent<Flower>();
     }
     public override void Enter()
     {
@@ -85,8 +85,8 @@ class GoToResource: State
 
 class ConsumeResource:State
 {
-    Polen flower;
-    public ConsumeResource(Polen flower)
+    Flower flower;
+    public ConsumeResource(Flower flower)
     {
         this.flower = flower;
     }

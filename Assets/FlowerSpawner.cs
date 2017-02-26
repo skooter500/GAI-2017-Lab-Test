@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceSpawner : MonoBehaviour {
+public class FlowerSpawner : MonoBehaviour {
 
     public GameObject resporcePrefab;
 
