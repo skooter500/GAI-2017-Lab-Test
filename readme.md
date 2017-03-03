@@ -2,9 +2,11 @@
 
 The goal of this test is to create the AI for the blue resource gathers depicted in the video below. 
 
+[![YouTube](http://img.youtube.com/vi/dRVBgMaKsU8/0.jpg)](https://www.youtube.com/watch?v=dRVBgMaKsU8)
+
 What is happening:
 
-- The yellow boxes represent flowers that contain pollen, a resource that the bees want to collect. Bees are represented by the blue boxes. The bees collect pollen from the flowers and bring it back to the hive. The hive is represented by a purple box.  
+- The yellow boxes represent flowers that contain pollen, a resource that the bees want to collect. Bees are represented by the blue boxes with the wings. The bees collect pollen from the flowers and bring it back to the hive. The hive is represented by a purple cylinder.  
 - The hive can create a maximum of 10 bees at a rate of 1 every 2 seconds. A bee costs 5 units of pollen to make. The hive starts with 10 units of pollen and so it will be able to make 2 bees initially. 
 - As the bees collect more pollen, the hive makes more bees
 - Bees have the following behaviour:
@@ -21,13 +23,18 @@ What is happening:
 - No use of any internet resources apart from the Unity and Visual Studio API reference pages.  
 
 # Instructions
-- Fork this git repository. This gives a Unity starter project with a starter scene. Open scene1 and you will see the flower spawner behaviour has been provided. Your task is to create the bees.
+- Use the assignment submission link you will have received by email. This will provide access to a git repository you need to clone with the starter code for the test. 
+- You will also need to submit your assignment to this repository by commiting to it
+- I strongly suggest that you make regular commits every time you get something working or every 20 minutes at least. 
 
 # Marking Scheme
 | Description | Marks |
 |-------------|-------|
-| Creating in new bees from the hive as described above | 20 |
+| Creating new bees from the hive as described above | 20 |
 | Bee movement | 25 |
 | Bee resource gathering | 35 |
-| Improvements to the bee's AI or presentation you make |20 |
+| Polish & flair | 20 |
+
+Marks will be awarded for creative, elegent and efficient soultions
+
 
