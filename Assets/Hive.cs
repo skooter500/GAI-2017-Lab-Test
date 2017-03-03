@@ -6,9 +6,17 @@ public class Hive : MonoBehaviour {
 
     public float polen = 10;
     public GameObject beePrefab;
+    public int beeCount = 0;
 
-	// Use this for initialization
-	void Start () {
+    public void OnGUI()
+    {
+        GUI.color = Color.black;
+        GUI.Label(new Rect(10, 10, 100, 20), "Pollen: " + polen);
+        GUI.Label(new Rect(10, 30, 100, 20), "Bees made: " + beeCount);
+    }
+
+    // Use this for initialization
+    void Start () {
         StartCoroutine(SpawnBees());
 	}
 
@@ -20,6 +28,7 @@ public class Hive : MonoBehaviour {
             if (polen >= 5 && bees.Length < 10)
             {
                 polen -= 5;
+                beeCount++;
                 GameObject bee = Instantiate(beePrefab);
                 bee.transform.position = transform.position;
                 bee.transform.parent = transform;

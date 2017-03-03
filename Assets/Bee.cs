@@ -36,6 +36,7 @@ class WanderState : State
         if (Vector3.Distance(bee.transform.position, bee.arriveTarget) < 5)
         {
             bee.ChangeState(new WanderState());
+            return;
         }
 
         foreach (GameObject flower in flowersInBloom)
@@ -94,8 +95,7 @@ class ConsumeResource:State
     public override void Enter()
     {
         bee.arriveEnabled = false;
-        //bee.velocity = Vector3.zero;
-
+        //e.velocity = Vector3.zero;
     }
 
     public override void Update()
@@ -105,7 +105,8 @@ class ConsumeResource:State
             bee.ChangeState(new ReturnToHive());
             return;
         }
-        if (flower.polen <= 0)
+        // Is this better than checking the polen.y
+        if (flower.transform.localScale.y <= 0)
         {
             GameObject.Destroy(flower.gameObject);
             bee.ChangeState(new ReturnToHive());

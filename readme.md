@@ -21,13 +21,16 @@ What is happening:
 - No use of any internet resources apart from the Unity and Visual Studio API reference pages.  
 
 # Instructions
-- Fork this git repository. This gives a Unity starter project with a starter scene. Open scene1 and you will see the flower spawner behaviour has been provided. Your task is to create the bees.
+- Use the assignment submission link you will have received by email. This will provide access to a git repository you need to clone with the starter code for the test. 
+- You will also need to submit your assignment to this repository by commiting to it
+- I strongly suggest that you make regular commits every time you get something working or every 20 minutes at least. 
 
 # Marking Scheme
 | Description | Marks |
 |-------------|-------|
-| Creating in new bees from the hive as described above | 20 |
+| Creating new bees from the hive as described above | 20 |
 | Bee movement | 25 |
 | Bee resource gathering | 35 |
-| Improvements to the bee's AI or presentation you make |20 |
+| Improvements to the bee's AI or presentation you make | 20 |
 
+Marks will be awarded for creative, elegent and efficient soultions
