@@ -17,8 +17,8 @@ class WanderState : State
     {
         FlowerSpawner flowers = GameObject.FindObjectOfType<FlowerSpawner>();
         
-        bee.arriveEnabled = true;
-        bee.arriveTarget = new Vector3(
+        bee.arrive.enabled = true;
+        bee.arrive.targetPosition = new Vector3(
             Random.Range(-flowers.radius, flowers.radius)
             , 0.5f
             , Random.Range(-flowers.radius, flowers.radius)
@@ -33,7 +33,7 @@ class WanderState : State
     public override void Update()
     {
         GameObject[] flowersInBloom = GameObject.FindGameObjectsWithTag("flower");
-        if (Vector3.Distance(bee.transform.position, bee.arriveTarget) < 5)
+        if (Vector3.Distance(bee.transform.position, bee.arrive.targetPosition) < 5)
         {
             bee.ChangeState(new WanderState());
             return;
@@ -59,10 +59,10 @@ class GoToResource: State
     }
     public override void Enter()
     {
-        bee.arriveEnabled = true;
+        bee.arrive.enabled = true;
         Vector3 pos = flower.transform.position;
         pos.y = 0.5f;
-        bee.arriveTarget = pos;
+        bee.arrive.targetPosition = pos;
     }
 
     public override void Exit()
@@ -94,7 +94,7 @@ class ConsumeResource:State
 
     public override void Enter()
     {
-        bee.arriveEnabled = false;
+        bee.arrive.enabled = false;
         //e.velocity = Vector3.zero;
     }
 
@@ -114,18 +114,16 @@ class ConsumeResource:State
         }
         flower.polen -= Time.deltaTime;
         bee.polen += Time.deltaTime;
-
     }
 }
-
 class ReturnToHive : State
 {
     GameObject hive;
     public override void Enter()
     {
-        bee.arriveEnabled = true;
+        bee.arrive.enabled = true;
         hive = GameObject.FindGameObjectWithTag("hive");
-        bee.arriveTarget = hive.transform.position;
+        bee.arrive.targetPosition = hive.transform.position;
     }
 
     public override void Update()
@@ -133,6 +131,7 @@ class ReturnToHive : State
         if (Vector3.Distance(bee.transform.position, hive.transform.position) < 1.0f)
         {
             hive.GetComponent<Hive>().polen += bee.polen;
+            hive.GetComponent<Hive>().polenCollected += bee.polen;
             bee.polen = 0;
             bee.ChangeState(new WanderState());
         }
@@ -140,34 +139,16 @@ class ReturnToHive : State
 }
 
 public class Bee : MonoBehaviour {
-    public Vector3 force;
-    public Vector3 acceleration;
-    public Vector3 velocity;
-
-    public float maxSpeed = 5;
-    public float mass = 1;
-
-    public bool arriveEnabled = false;
-    public Vector3 arriveTarget;
-    public float slowingDistance = 20;
-
     
     public float polen = 0;
 
+    [HideInInspector]   
+    public Boid boid;
+
+    [HideInInspector]
+    public Arrive arrive;
     State state;
-
-    public Vector3 Arrive(Vector3 target, float slowing)
-    {
-        Vector3 toTarget = target - transform.position;
-        float dist = toTarget.magnitude;
-
-        float clamped = maxSpeed * (dist / slowing);
-        float ramped = Mathf.Min(clamped, maxSpeed);
-
-        Vector3 desired = (toTarget / dist) * ramped;
-        return desired - velocity;
-    }
-
+    
     public void ChangeState(State newState)
     {
         if (state != null)
@@ -183,6 +164,8 @@ public class Bee : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        boid = GetComponent<Boid>();
+        arrive = GetComponent<Arrive>();
         ChangeState(new WanderState());
 
         StartCoroutine(Think());
@@ -198,27 +181,6 @@ public class Bee : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-
         state.Update();
-
-        if (arriveEnabled)
-        {
-            force += Arrive(arriveTarget, slowingDistance);
-        }
-        acceleration = force / mass;
-        velocity += acceleration * Time.deltaTime;
-
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-
-        transform.position += velocity * Time.deltaTime;
-
-        if (velocity.magnitude > 0.01f)
-        {
-            transform.forward = velocity;
-        }
-
-        velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime);
-
-        force = Vector3.zero;
 	}
 }
