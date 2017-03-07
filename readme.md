@@ -4,7 +4,6 @@ The goal of this test is to create the AI for the blue resource gathers depicted
 
 [![YouTube](http://img.youtube.com/vi/dRVBgMaKsU8/0.jpg)](https://www.youtube.com/watch?v=dRVBgMaKsU8)
 
-
 What is happening:
 
 - The yellow boxes represent flowers that contain pollen, a resource that the bees want to collect. Bees are represented by the blue boxes with the wings. The bees collect pollen from the flowers and bring it back to the hive. The hive is represented by a purple box.  
@@ -43,7 +42,7 @@ Marks will be awarded for creative, elegent and efficient soultions
 | Description | Marks |
 |-------------|-------|
 | 1 | Everything works as per the video. Code is organised into seperate game components for the AI, boid and arrive behaviour. A finite state machine implemented using the state machine design pattern. The movement of the bees is fluid, with techniques such as lerping used as appropriate in the integration function. There is some visual enhancement or AI enhancement such as an animation, trails or sound  |
-| 2.1 | Mostly everything works and the code is organised into a Bee class and a Hive class. Finits state machine is included based on enumerated types. Movement is mostly smooth but with some occasional glitchyness. No additional visual or AI enhancements |
+| 2.1 | Mostly everything works and the code is organised into a Bee class and a Hive class. Finite state machine is included based on enumerated types. Movement is mostly smooth but with some occasional glitchyness. No additional visual or AI enhancements |
 | 2.2 | Bee movement is working ok based on a rigid body or an integration function in a Bee class. Bugs or incomplete bee spawning.  Bee AI has bugs or is incomplete. No additional visual or AI enhancements included. |
 | Pass | Program compiles and the bees move, but significant bugs in bee spawning and AI  |
 | Fail | Program wont compile and nothing works |  
