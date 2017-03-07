@@ -1,6 +1,8 @@
 # Game Engines 2 Lab Test Summer 2017
 
-The goal of this test is to create the AI for the blue resource gathers depicted in the video below. 
+The goal of this test is to create the AI for the blue resource gathers depicted in the video below:
+
+[![YouTube](http://img.youtube.com/vi/dRVBgMaKsU8/0.jpg)](https://www.youtube.com/watch?v=dRVBgMaKsU8)
 
 What is happening:
 
@@ -31,6 +33,6 @@ What is happening:
 | Creating new bees from the hive as described above | 20 |
 | Bee movement | 25 |
 | Bee resource gathering | 35 |
-| Improvements to the bee's AI or presentation you make | 20 |
+| Polish & flair	 | 20 |
 
 Marks will be awarded for creative, elegent and efficient soultions
